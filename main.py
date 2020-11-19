@@ -1,6 +1,5 @@
 import json
-
-with open("setting.json" , "r" , encoding="utf-8") as jfile:
+with open("reportcard\\scorecard\\setting.json" , "r" , encoding="utf-8") as jfile:
     jdata = json.load(jfile)
 
 subject = jdata["subject"]    #自定義科目
@@ -8,8 +7,16 @@ student = jdata["student"]    #自定義人名
 
 allsub = len(subject)
 allstu = len(student)
-sublist = " ".join(subject)
+#sublist = " ".join(subject)
 stulist = " ".join(str(student))
+
+p = []
+n = 0
+while n+1 <= allsub:
+    p.append("{:^10s}".format(subject[n]))
+    n += 1
+sublist = f"{p[0]}{p[1]}"
+
 
 reportcard = []                      #成績初始化
 for i in range(allstu):
@@ -31,7 +38,7 @@ def subava(sub):                            #獲得單科平均
 n = 0      
 tmplist = []                           #製作科目平均列表
 while n+1 <= allsub:
-    tmplist.append(str(subava(n)))
+    tmplist.append("{:^10s}".format(str(subava(n))))
     n += 1
 subavelist = " ".join(tmplist)
 
@@ -58,8 +65,8 @@ allsubplus = s
 
 allsubave = "{:.2f}".format(allsubplus/(allsub*allstu))     #全科平均
 
-print( "名字", sublist , "總分" , "平均" )      #第一行title
+print("{:^10s}{}{:^10s}{:^10s}".format("名字", sublist , "總分" , "平均"))      #第一行title
 for i in range(allstu):                        #中間
     print(student[i] , scoreline(i) , allplus(i) , "{:.2f}".format(allplus(i)/allsub))
 
-print("XX" , subavelist , "XX" , allsubave )
+print("{:^10s}{}{:^10s}{:^10s}".format("XX" , subavelist , "XX" , allsubave) )
