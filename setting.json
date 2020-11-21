@@ -1,5 +1,5 @@
 {
-    "subject":["國文","數學"],
-    "student":["我","你"],
-    "line":10
+    "subject":["chinese","math"],
+
+    "student":["you","me"]
 }
