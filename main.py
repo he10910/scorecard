@@ -1,4 +1,5 @@
 import json
+
 with open("setting.json" , "r" , encoding="utf-8") as jfile:
     jdata = json.load(jfile)
 
@@ -9,13 +10,12 @@ allsub = len(subject)
 allstu = len(student)
 stulist = " ".join(str(student))
 
-
 def sublist():
     for i in range(allsub) :
         print("{:^10s}".format(str(subject[i])),end="")
     return ""
 
-reportcard = []                      #成績初始化
+reportcard = []                      #成績單初始化
 for i in range(allstu):
     reportcard.append([0]*allsub)
 
@@ -39,7 +39,6 @@ while n+1 <= allsub:
     n += 1
 subavelist = "".join(tmplist)
 
-
 def scoreline(whos):                           #獲得成績排序
     for i in range(allsub):
         print("{:^10s}".format(str(reportcard[whos][i])),end = "")
@@ -59,9 +58,7 @@ for i in range(allstu):
         s += int(reportcard[i][j])
 allsubplus = s
 
-
 allsubave = "{:.2f}".format(allsubplus/(allsub*allstu))     #全科平均
-
 
 print("{:^10s}".format("name"),end = "")             #第一行title
 print(sublist(),end = "")
