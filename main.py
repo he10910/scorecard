@@ -1,5 +1,5 @@
 import json
-with open("reportcard\\scorecard\\setting.json" , "r" , encoding="utf-8") as jfile:
+with open("setting.json" , "r" , encoding="utf-8") as jfile:
     jdata = json.load(jfile)
 
 subject = jdata["subject"]    #自定義科目
