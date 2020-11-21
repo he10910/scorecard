@@ -10,13 +10,11 @@ allstu = len(student)
 #sublist = " ".join(subject)
 stulist = " ".join(str(student))
 
-p = []
-n = 0
-while n+1 <= allsub:
-    p.append("{:^10s}".format(subject[n]))
-    n += 1
-sublist = f"{p[0]}{p[1]}"
 
+def sublist():
+    for i in range(allsub) :
+        print("{:10s}".format(str(subject[i])),end="")
+    return ""
 
 reportcard = []                      #成績初始化
 for i in range(allstu):
@@ -44,9 +42,9 @@ subavelist = " ".join(tmplist)
 
 
 def scoreline(whos):                           #獲得成績排序
-    scoreline = " ".join(reportcard[whos])
-    return scoreline
-
+    for i in range(allsub):
+        print("{:^10s}".format(str(reportcard[whos][i])),end = "")
+    return ""
 def allplus(whos):                            #獲得單人總分
     s = 0
     n = 0
@@ -65,8 +63,18 @@ allsubplus = s
 
 allsubave = "{:.2f}".format(allsubplus/(allsub*allstu))     #全科平均
 
-print("{:^10s}{}{:^10s}{:^10s}".format("名字", sublist , "總分" , "平均"))      #第一行title
-for i in range(allstu):                        #中間
-    print(student[i] , scoreline(i) , allplus(i) , "{:.2f}".format(allplus(i)/allsub))
 
-print("{:^10s}{}{:^10s}{:^10s}".format("XX" , subavelist , "XX" , allsubave) )
+print("{:^10s}".format("名字"),end = "")             #第一行title
+print(sublist(),end = "")
+print("{:10s}{:10s}".format("總分","平均")) 
+
+for i in range(allstu):                        #中間
+    print("{:^10s}".format(student[i]),end = "")
+    print(scoreline(i),end = "")
+    print("{:^10d}".format(allplus(i)),end = "")  
+    print("{:^.2f}".format(allplus(i)/allsub))
+
+print("{:^10s}".format("平均"),end = "")   #最後
+print(subavelist,end = "")
+print("{:^10s}".format("XX"),end = "")
+print("{:^10s}".format(allsubave))
