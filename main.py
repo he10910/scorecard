@@ -15,9 +15,7 @@ def sublist():
         print("{:^10s}".format(str(subject[i])),end="")
     return ""
 
-reportcard = []                      #成績單初始化
-for i in range(allstu):
-    reportcard.append([0]*allsub)
+reportcard = [[0 for i in range(allsub)] for j in range(allstu)  ]                    #成績單初始化
 
 for i in range(allstu):
     for j in range(allsub):
@@ -60,17 +58,9 @@ allsubplus = s
 
 allsubave = "{:.2f}".format(allsubplus/(allsub*allstu))     #全科平均
 
-print("{:^10s}".format("name"),end = "")             #第一行title
-print(sublist(),end = "")
-print("{:^10s}{:^10s}".format("total","avarage")) 
+print("{0:^10s}{1}{2:^10s}{3:^10s}".format("name",sublist(),"total","avarage"))
 
 for i in range(allstu):                        #中間
-    print("{:^10s}".format(student[i]),end = "")
-    print(scoreline(i),end = "")
-    print("{:^10d}".format(allplus(i)),end = "")  
-    print("{:^10.2f}".format(allplus(i)/allsub))
+    print("{0:^10s}{1}{2:^10d}{3:^10.2f}".format(student[i],scoreline(i),allplus(i),allplus(i)/allsub))
 
-print("{:^10s}".format("avarage"),end = "")   #最後
-print(subavelist,end = "")
-print("{:^10s}".format("XX"),end = "")
-print("{:^10s}".format(allsubave))
+print("{0:^10s}{1}{2:^10s}{3:^10s}".format("avarage",subavelist,"XX",allsubave))
