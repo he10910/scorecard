@@ -22,7 +22,7 @@ for i in range(allstu):
         reportcard[i][j] = input(f"{student[i]} {subject[j]}:")  #設定數值
 print("-"*10)
 
-def subava(sub):                            #獲得單科平均
+def subave(sub):                            #獲得單科平均
     s = 0
     n = 0
     while n+1 <= allstu:
@@ -33,7 +33,7 @@ def subava(sub):                            #獲得單科平均
 n = 0      
 tmplist = []                           #製作科目平均列表
 while n+1 <= allsub:
-    tmplist.append("{:^10s}".format(str(subava(n))))
+    tmplist.append("{:^10s}".format(str(subave(n))))
     n += 1
 subavelist = "".join(tmplist)
 
@@ -58,9 +58,13 @@ allsubplus = s
 
 allsubave = "{:.2f}".format(allsubplus/(allsub*allstu))     #全科平均
 
-print("{0:^10s}{1}{2:^10s}{3:^10s}".format("name",sublist(),"total","avarage"))
+print("{:^10s}".format("name"),end="")    #第一行
+print(sublist(),end="")
+print("{:^10s}{:^10s}".format("total","average"))
 
 for i in range(allstu):                        #中間
-    print("{0:^10s}{1}{2:^10d}{3:^10.2f}".format(student[i],scoreline(i),allplus(i),allplus(i)/allsub))
+    print("{0:^10s}".format(student[i]),end="")
+    print(scoreline(i),end="")
+    print("{:^10d}{:^10.2f}".format(allplus(i),allplus(i)/allsub))
 
-print("{0:^10s}{1}{2:^10s}{3:^10s}".format("avarage",subavelist,"XX",allsubave))
+print("{0:^10s}{1}{2:^10s}{3:^10s}".format("average",subavelist,"XX",allsubave))   #最後一行
